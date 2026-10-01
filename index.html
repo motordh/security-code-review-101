@@ -5,6 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <!-- Modified to add a locally printable completion certificate. -->
+  <link rel="stylesheet" href="certificate.css">
   <title>Security Code Review 101</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -139,6 +141,29 @@
         </div>
     </div>
 </div>
+<section class="container certificate-controls" ng-if="courseComplete">
+  <div class="card card-body">
+    <h2>Your completion certificate</h2>
+    <label for="certificateName">Participant name</label>
+    <input id="certificateName" class="form-control" type="text" maxlength="100" autocomplete="name" ng-model="certificate.name" placeholder="Enter your full name">
+    <p class="mt-3">Completion date: <span ng-bind="certificate.date"></span></p>
+    <p>Choose Print certificate, then Save as PDF. Save the PDF to your Dropbox evidence folder. Turn off browser headers and footers for a clean certificate.</p>
+    <button class="btn btn-primary" type="button" ng-disabled="!certificate.name.trim()" ng-click="printCertificate()">Print certificate / Save as PDF</button>
+    <p class="mt-3 mb-0">Your name stays in this browser session. This page does not upload to Dropbox.</p>
+  </div>
+</section>
+<section id="completionCertificate" ng-if="courseComplete && certificate.name.trim()" aria-label="Completion certificate">
+  <div class="certificate-sheet">
+    <p class="certificate-eyebrow">Certificate of completion</p>
+    <h1>Security Code Review 101</h1>
+    <p>This certifies that</p>
+    <h2 ng-bind="certificate.name"></h2>
+    <p>completed all 17 questions across the six course categories.</p>
+    <p class="certificate-date">Completed on <strong ng-bind="certificate.date"></strong></p>
+    <div class="certificate-topics">Input Validation · Parameterized Statements · Memory Best Practices<br>Protecting Data · Preventing Cross-Site Scripting · Indirect Object References</div>
+    <footer>Based on OWASP Secure Coding Dojo training material.<br>Course completion record; not an OWASP-issued certification.</footer>
+  </div>
+</section>
 <br><br><br><br>
 <div id="finalModal" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -156,7 +181,7 @@
                     <img src="passed.png" class="img-fluid"/>
                 </div>
                 <div class="col-7">
-                    <h3>Congratulations!</h1>
+                    <h3>Congratulations!</h3>
                     <p>You have successfully demonstrated that you can identify basic security flaws through code review.</p>
                 </div>  
 
@@ -164,7 +189,7 @@
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <a class="btn btn-primary" href="#certificateName" data-dismiss="modal" onclick="setTimeout(function(){ var field = document.getElementById('certificateName'); if(field) { field.scrollIntoView({block:'center'}); field.focus(); } }, 200)">Create certificate</a>
         </div>
       </div>
     </div>

@@ -1,8 +1,15 @@
+// Modified October 1, 2026: participant name, completion date, and certificate printing.
 var app = angular.module("codeReview101", ['ngSanitize']);
 
 app.controller("codeReview101Ctrl", function($scope, $http, $location) {
     
     $scope.fromPortal = window.location.search.indexOf("fromPortal")!==-1;
+    $scope.certificate = { name: '', date: '' };
+    $scope.courseComplete = false;
+    $scope.printCertificate = function() {
+        if (!$scope.courseComplete || !$scope.certificate.name.trim()) return;
+        window.print();
+    };
 
     $scope.getCode = function(id){
         var codeDiv = document.querySelector(`#codeDiv_${id}`);
@@ -41,7 +48,11 @@ app.controller("codeReview101Ctrl", function($scope, $http, $location) {
                 break;
             }
         }
-        if(allPassed){
+        if(allPassed && !$scope.courseComplete){
+            $scope.courseComplete = true;
+            $scope.certificate.date = new Date().toLocaleDateString('en-US', {
+                year: 'numeric', month: 'long', day: 'numeric'
+            });
             $('#finalModal').modal();
         }
     }
@@ -177,3 +188,4 @@ app.filter('highlight', function() {
             : text;
     };
 });
+

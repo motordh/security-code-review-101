@@ -1,0 +1,17 @@
+/* Completion certificate addition. Original course: OWASP Secure Coding Dojo. */
+#completionCertificate { display: none; }
+.certificate-controls { margin-top: 2rem; margin-bottom: 3rem; }
+@media print {
+  @page { size: landscape; margin: 12mm; }
+  html, body { background: white !important; margin: 0 !important; padding: 0 !important; height: auto !important; overflow: visible !important; }
+  body > * { display: none !important; }
+  body > #completionCertificate { display: block !important; color: #142b45; font-family: Georgia, 'Times New Roman', serif; }
+  .certificate-sheet { border: 3px double #142b45; padding: 12mm 14mm; text-align: center; break-inside: avoid; }
+  .certificate-eyebrow { text-transform: uppercase; letter-spacing: 3px; font: 12pt Arial, sans-serif; margin: 0 0 8mm; }
+  .certificate-sheet h1 { font-size: 30pt; margin: 0 0 8mm; }
+  .certificate-sheet h2 { font-size: 27pt; margin: 5mm 0; overflow-wrap: anywhere; }
+  .certificate-sheet p { font-size: 13pt; margin: 4mm 0; }
+  .certificate-sheet .certificate-date { margin-top: 8mm; }
+  .certificate-topics { font: 10pt/1.6 Arial, sans-serif; margin-top: 8mm; }
+  .certificate-sheet footer { border-top: 1px solid #a4adba; padding-top: 4mm; margin-top: 7mm; font: 9pt/1.5 Arial, sans-serif; }
+}

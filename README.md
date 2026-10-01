@@ -1,6 +1,6 @@
 # Security Code Review 101
 
-Original OWASP Secure Coding Dojo exercise, extracted without changes to its lesson content or application code.
+OWASP Secure Coding Dojo exercise with a printable completion certificate added on October 1, 2026. Lesson content is unchanged. Modified files: index.html and codeReview101Ctrl.js. Added file: certificate.css.
 
 Source: https://github.com/OWASP/SecureCodingDojo
 Source commit: b36286001eee7bfe263ba9209ab6f1da94e34622
@@ -29,3 +29,13 @@ The package includes all six categories of Security Code Review 101. It does not
 For standalone use, omit ?fromPortal. If integrating with an existing Dojo portal that accepts completion codes, retain ?fromPortal before the category fragment.
 
 GitHub Pages publishes the supplied code snippets as static text; the Java, JSP, C++, and other examples are lesson material, not server programs to execute.
+
+## Certificate update for an existing site
+
+Upload and replace index.html and codeReview101Ctrl.js, and add certificate.css at the repository root. The other lesson files do not need replacing.
+
+After completing all 17 questions correctly, select Create certificate, enter the participant name, and choose Print certificate / Save as PDF. The date comes from the participant's device when the course is completed. Use Chrome or Edge, choose landscape if needed, and turn off print headers and footers. Save the PDF and upload it to your Dropbox evidence folder (or save directly to a locally synced Dropbox folder).
+
+Names and completion are not sent to a server. Print before reloading or closing the page: progress and name are only held in the current session. This is a self-reported course completion record, not an independently verified or OWASP-issued certification. Dropbox upload is manual.
+
+Validation: all 17 correct answers were clicked in a local browser; the completion form appeared, the date populated, and printing was disabled until a name was entered. Native print preview was not available in the in-app test browser; verify Save as PDF in Chrome or Edge after uploading.
